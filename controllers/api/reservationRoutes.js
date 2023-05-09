@@ -3,18 +3,122 @@ const { Room, User, Branch, Reservation } = require("../../models");
 const { authRequired } = require("../../utils/authenticator");
 
 // Get all reservations for a specific user
-router.get("/users/:user_id/reservations", authRequired);
+router.get("/users/:user_id/reservations", authRequired, async (req, res) => {
+  try {
+    const userReservations = await Reservation.findAll({
+      where: {
+        user_id: req.params.user_id,
+      },
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+        {
+          model: Room,
+          attributes: ["room_type", "price", "capacity"],
+          include: {
+            model: Branch,
+            attributes: ["name", "location"],
+          },
+        },
+      ],
+    });
+
+    res.json(userReservations);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
 
 // Create a new reservation for a user
-router.post("/users/:user_id/reservations", authRequired);
+router.post("/users/:user_id/reservations", authRequired, async (req, res) => {
+  try {
+    const newReservation = await Reservation.create({
+      ...req.body,
+      user_id: req.params.user_id,
+    });
+
+    res.status(201).json(newReservation);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
 
 // Get a specific reservation that a user has
-router.get("/reservations/:id", authRequired);
+router.get("/reservations/:id", authRequired, async (req, res) => {
+  try {
+    const reservation = await Reservation.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+        {
+          model: Room,
+          attributes: ["room_type", "price", "capacity"],
+          include: {
+            model: Branch,
+            attributes: ["name", "location"],
+          },
+        },
+      ],
+    });
+
+    if (!reservation) {
+      res.status(404).json({ message: "No reservation found with this id" });
+      return;
+    }
+
+    res.json(reservation);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
 
 // Update a reservation
-router.put("/reservations/:id", authRequired);
+router.put("/reservations/:id", authRequired, async (req, res) => {
+  try {
+    const updatedReservation = await Reservation.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!updatedReservation[0]) {
+      res.status(404).json({ message: "No reservation found with this id" });
+      return;
+    }
+
+    res.json({ message: "Reservation updated" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
 
 // Delete a reservation
-router.delete("/reservations/:id", authRequired);
+router.delete("/reservations/:id", authRequired, async (req, res) => {
+  try {
+    const deletedReservation = await Reservation.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!deletedReservation) {
+      res.status(404).json({ message: "No reservation found with this id" });
+      return;
+    }
+
+    res.json({ message: "Reservation deleted" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
