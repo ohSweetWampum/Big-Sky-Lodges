@@ -3,43 +3,95 @@ const { Branch, Room, Reservation, User } = require("../models");
 
 const { authRequired } = require("../utils/authenticator");
 
-// Render home page with all branches
+// Render main page with all branches
 router.get("/", async (req, res) => {
   try {
-    const branchData = await Branch.findAll();
-    const branches = branchData.map((branch) => branch.get({ plain: true }));
-    res.render('mainPage', {
+    // Fetch all branches data using your models
+    const allBranches = await Branch.findAll();
+
+    // Convert data to plain JSON
+    const branches = allBranches.map((branch) => branch.get({ plain: true }));
+
+    // Render the home page with the branches data
+    res.render("mainPage", {
       branches,
-      logged_in: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
     });
-} catch (err) {
+  } catch (err) {
+    console.error(err);
     res.status(500).json(err);
-}
+  }
 });
 
 // Render branch details page with rooms
 router.get("/branch/:id", async (req, res) => {
-  // Implementation
+  try {
+    const branchData = await Branch.findByPk(req.params.id, {
+      include: [{ model: Room }],
+    });
+
+    if (!branchData) {
+      res.status(404).json({ message: "No branch found with that id!" });
+      return;
+    }
+
+    const branch = branchData.get({ plain: true });
+
+    res.render("branchDetails", {
+      branch,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // Render room details page
 router.get("/rooms/:id", async (req, res) => {
-  // Implementation
+  try {
+    const roomData = await Room.findByPk(req.params.id);
+
+    if (!roomData) {
+      res.status(404).json({ message: "No room found with that id!" });
+      return;
+    }
+
+    const room = roomData.get({ plain: true });
+
+    res.render("roomDetails", {
+      room,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // Render user dashboard with reservations
 router.get("/users/:user_id/reservations", authRequired, async (req, res) => {
-  // Implementation
+  try {
+    const userData = await User.findByPk(req.params.user_id, {
+      include: [{ model: Reservation }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render("dashboard", {
+      user,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-// Render login page
+// Render login/signup page
 router.get("/login", (req, res) => {
-  // Implementation
-});
-
-// Render signup page
-router.get("/signup", (req, res) => {
-  // Implementation
+  if (req.session.loggedIn) {
+    res.redirect("/dashboard");
+    return;
+  }
+  res.render("userLogin");
 });
 
 module.exports = router;
