@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Room, User, Branch, Reservation } = require("../../models");
 const { authRequired } = require("../../utils/authenticator");
+const Op = require("sequelize").Op;
 
 // Get all reservations for a specific user
 router.get("/users/:user_id/reservations", authRequired, async (req, res) => {
@@ -35,6 +36,36 @@ router.get("/users/:user_id/reservations", authRequired, async (req, res) => {
 // Create a new reservation for a user
 router.post("/users/:user_id/reservations", authRequired, async (req, res) => {
   try {
+    const { check_in_date, check_out_date, room_id } = req.body;
+
+    // Check for conflicting reservations
+    const conflictingReservations = await Reservation.count({
+      where: {
+        room_id: room_id,
+        [Op.or]: [
+          {
+            check_in_date: {
+              [Op.between]: [check_in_date, check_out_date],
+            },
+          },
+          {
+            check_out_date: {
+              [Op.between]: [check_in_date, check_out_date],
+            },
+          },
+        ],
+      },
+    });
+
+    if (conflictingReservations > 0) {
+      res
+        .status(400)
+        .json({
+          message: "The room is already reserved during the requested period",
+        });
+      return;
+    }
+
     const newReservation = await Reservation.create({
       ...req.body,
       user_id: req.params.user_id,
