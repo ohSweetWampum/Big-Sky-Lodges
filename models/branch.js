@@ -20,7 +20,7 @@ Branch.init(
             allowNull: false,
         },
         location: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         }
     },

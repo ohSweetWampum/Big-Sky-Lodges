@@ -4,8 +4,17 @@ const { Branch, Room, Reservation, User } = require("../models");
 const { authRequired } = require("../utils/authenticator");
 
 // Render home page with all branches
-router.get("/branches", async (req, res) => {
-  // Implementation
+router.get("/", async (req, res) => {
+  try {
+    const branchData = await Branch.findAll();
+    const branches = branchData.map((branch) => branch.get({ plain: true }));
+    res.render('mainPage', {
+      branches,
+      logged_in: req.session.logged_in,
+    });
+} catch (err) {
+    res.status(500).json(err);
+}
 });
 
 // Render branch details page with rooms

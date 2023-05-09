@@ -11,6 +11,10 @@ Room.init(
             allowNull: false,
             autoIncrement: true,
         },
+        room_num: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         room_type: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -28,6 +32,10 @@ Room.init(
             allowNull: false,
         },
         room_size: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        price: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
