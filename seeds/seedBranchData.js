@@ -1,8 +1,8 @@
 const branchData = [
   {
-    city: "Bozeman",
-    state: "MT",
-    address: "123 Bozeman St",
+    name: "Bozeman,MT",
+    description: "wedwedw",
+    location: "123 Bozeman St",
   },
   {
     city: "Missoula",
