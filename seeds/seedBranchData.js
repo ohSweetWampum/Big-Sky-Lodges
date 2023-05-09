@@ -1,29 +1,32 @@
+const { Branch } = require('../models');
 const branchData = [
   {
-    name: "Bozeman,MT",
-    description: "wedwedw",
-    location: "123 Bozeman St",
+    name: "Bozeman",
+    description: "Good view", 
+    location: "123 Bozeman St, Bozeman MT",
   },
   {
-    city: "Missoula",
-    state: "MT",
-    address: "456 Missoula St",
+    name: "Missoula",
+    description: "Good neighborhood",
+    location: "456 Missoula St, Missoula MT",
   },
   {
-    city: "Whitefish",
-    state: "MT",
-    address: "789 Whitefish St",
+    name: "Whitefish",
+    description: "Big rooms",
+    location: "789 Whitefish St, Whitefish MT",
   },
   {
-    city: "Billings",
-    state: "MT",
-    address: "111 Billings St",
+    name: "Billings",
+    description: "Lots of amenities",
+    location: "111 Billings St, Billings MT",
   },
   {
-    city: "Great Falls",
-    state: "MT",
-    address: "222 Great Falls St",
+    name: "Great Falls",
+    description: "welcoming staff",
+    location: "222 Great Falls St, Great Falls MT",
   },
 ];
 
-module.exports = branchData;
+const seedBranches = () => Branch.bulkCreate(branchData);
+
+module.exports = seedBranches;
