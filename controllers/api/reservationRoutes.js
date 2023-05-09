@@ -58,11 +58,9 @@ router.post("/users/:user_id/reservations", authRequired, async (req, res) => {
     });
 
     if (conflictingReservations > 0) {
-      res
-        .status(400)
-        .json({
-          message: "The room is already reserved during the requested period",
-        });
+      res.status(400).json({
+        message: "The room is already reserved during the requested period",
+      });
       return;
     }
 

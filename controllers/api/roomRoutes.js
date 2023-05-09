@@ -47,11 +47,9 @@ router.get("/rooms/:id/availability", async (req, res) => {
     const endDate = req.query.end_date;
 
     if (!startDate || !endDate) {
-      res
-        .status(400)
-        .json({
-          message: "Please provide start_date and end_date query parameters",
-        });
+      res.status(400).json({
+        message: "Please provide start_date and end_date query parameters",
+      });
       return;
     }
 
