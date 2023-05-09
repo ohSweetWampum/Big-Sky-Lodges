@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS bigskylodges_db;
-CREATE DATABASE bigskylodges_db;
-USE bigskylodges_db;
+DROP DATABASE IF EXISTS big_sky_db;
+CREATE DATABASE big_sky_db;
+USE big_sky_db;
