@@ -1,48 +1,41 @@
+
 <div class="dashboard-body">
     <h2>Dashboard</h2>
     <div class="header-card">
-        <h1>Welcome {{username}} </h1>
-            <div class="reservation-list">
-            <div class="list1">
-                <div class="row">
-                    <h4 id="your-reservation">Your Reservations</h4>
+    <h1>Welcome, {{user.username}}!</h1>
+    <h2>Your Reservations</h2>
+    {{#if user.reservations}}
+    <table>
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Room</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each user.reservations}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{room.name}}</td>
+                <td>{{startDate}}</td>
+                <td>{{endDate}}</td>
+                <td>
+                    <button class="update-reservation-btn" data-id="{{id}}">Update</button>
+                    <button class="delete-reservation-btn" data-id="{{id}}">Delete</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+<p>No reservations found.</p>
+{{/if}}
+<a href="/new-reservation">Add a new reservation</a>
 
-
-                    <h1>Welcome, {{user.username}}!</h1>
-                    <h2 id="">Your Reservations</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Reservation ID</th>
-                                <th>Room</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each user.reservations}}
-                            <tr>
-                                <td>{{id}}</td>
-                                <td>{{room.name}}</td>
-                                <td>{{startDate}}</td>
-                                <td>{{endDate}}</td>
-                                <td>
-                                    <button class="update-reservation-btn" data-id="{{id}}">Update</button>
-                                    <button class="delete-reservation-btn" data-id="{{id}}">Delete</button>
-                                </td>
-                            </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
-                    {{#each this.room.branch}}
-                    <div class="col-md-4 mb-4">
-                        <div class="card" id="reservation-detail">
-                            <img src="https://via.placeholder.com/400x200.png" class="card-img-top" alt="{{this.name}}">
-                            <div class="card-body">
-                                <h5 class="card-title" id="card-title">{{this.name}}</h5>
-                                <p class="card-text"id="card-text">{{this.location}}</p>
-                                <p class="card-text"id="card-descrip">{{this.description}}</p>
+<script src="/js/dashboard.js" defer></script>
 
                             </div>
                         </div>
