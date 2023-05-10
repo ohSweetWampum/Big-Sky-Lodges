@@ -30,12 +30,9 @@
     "mysql2": "^3.2.4",
     "nodemon": "^2.0.22",
     "sequelize": "^6.31.1"
-<<<<<<< HEAD
-=======
   },
   "devDependencies": {},
   "engines":{
     "npm": "8.19.4"
->>>>>>> main
   }
 }
