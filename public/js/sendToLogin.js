@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (response.ok) {
-          document.location.replace("/dashboard");
+          const userId = await response.text();
+
+          document.location.replace(`/users/${userId}/reservations`);
         } else {
           document.location.replace("/login");
         }
