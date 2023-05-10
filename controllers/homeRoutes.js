@@ -88,7 +88,8 @@ router.get("/users/:user_id/reservations", authRequired, async (req, res) => {
 // Render login page
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect("/dashboard");
+    console.log("login in home")
+    res.redirect("/");
     return;
   }
   res.render("userLogin");

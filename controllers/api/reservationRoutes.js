@@ -51,7 +51,6 @@ router.post("/users/:user_id/reservations", authRequired, async (req, res) => {
         ],
       },
     });
-    console.log(conflictingReservations)
 
     if (conflictingReservations > 0) {
       res.status(400).json({
@@ -86,10 +85,8 @@ router.get("/reservations/:id", authRequired, async (req, res) => {
         },
         {
           model: Room,
-          attributes: ["room_type", "price", "capacity"],
           include: {
-            model: Branch,
-            attributes: ["name", "location"],
+            model: Branch
           },
         },
       ],
@@ -99,8 +96,7 @@ router.get("/reservations/:id", authRequired, async (req, res) => {
       res.status(404).json({ message: "No reservation found with this id" });
       return;
     }
-
-    res.json(reservation);
+    res.status(201).json(reservation);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -110,18 +106,52 @@ router.get("/reservations/:id", authRequired, async (req, res) => {
 // Update a reservation
 router.put("/reservations/:id", authRequired, async (req, res) => {
   try {
-    const updatedReservation = await Reservation.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
+    const findReservation = await Reservation.findByPk(req.params.id);
 
-    if (!updatedReservation[0]) {
+    if (!findReservation) {
       res.status(404).json({ message: "No reservation found with this id" });
       return;
     }
+    const { check_in_date, check_out_date, room_id } = req.body;
+    // Check for conflicting reservations
+    const conflictingReservations = await Reservation.count({
+      where: {
+        room_id: room_id,
+        [Op.or]: [
+          {
+            check_in_date: {
+              [Op.between]: [check_in_date, check_out_date],
+            },
+          },
+          {
+            check_out_date: {
+              [Op.between]: [check_in_date, check_out_date],
+            },
+          },
+        ],
+      },
+    });
 
-    res.json({ message: "Reservation updated" });
+    if (conflictingReservations > 0) {
+      res.status(400).json({
+        message: "The room is already reserved during the requested period",
+      });
+      return;
+    }
+    const updateReservation = await Reservation.update({
+      check_in_date: req.body.check_in_date,
+	    check_out_date: req.body.check_out_date,
+	    num_guests: req.body.num_guests,
+	    room_id: req.body.room_id,
+      user_id: req.params.user_id,
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    });
+  
+    res.status(200).json(updateReservation);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
