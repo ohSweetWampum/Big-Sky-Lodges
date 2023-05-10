@@ -19,20 +19,10 @@ async function userSignup(event) {
     if (response.ok) {
       document.location.replace("/");
     } else {
-      const data = await response.json();
-      console.error("Sign-up error:", data.error);
-      alert(data.message);
+      alert("Sign-up failed.");
     }
   }
 }
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const signupForm = document.querySelector("#signup-form");
-
-//   if (signupForm) {
-//     signupForm.addEventListener("submit", userSignup);
-//   }
-// });
 
 document.addEventListener("DOMContentLoaded", () => {
   const signupLink = document.querySelector(".signup-link");
@@ -42,5 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       document.location.replace("/signup");
     });
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const signupForm = document.querySelector(".signup-form");
+
+  if (signupForm) {
+    signupForm.addEventListener("submit", userSignup);
   }
 });

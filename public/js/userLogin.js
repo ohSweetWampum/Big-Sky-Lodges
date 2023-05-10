@@ -19,7 +19,6 @@ async function userLogin(event) {
     }
   }
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   const loginLink = document.querySelector(".login-link");
 
@@ -28,5 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       document.location.replace("/login");
     });
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.querySelector(".login-form");
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", userLogin);
   }
 });
