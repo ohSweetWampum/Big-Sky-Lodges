@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Big Sky Lodge</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css"> <link rel="stylesheet" href="/public/css/style.css">
+   </head>
+  <body class="custom-background">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 p-0">
@@ -28,22 +28,22 @@
                   <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Account</a>
+                  <a class="nav-link" href="/user/{{user.id}}">Account</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Home</a>
+                  <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Book Now</a>
                 </li>
                 <li class="nav-item">
                     {{#if logged_in}}
-                  <a class="nav-link" href="#">Logout</a>
+                  <a class="nav-link" href="/logout">Logout</a>
                   {{/if}}
                   <a href="#" class="nav-link">Login</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Sign Up</a>
+                  <a class="nav-link" href="/signup">Sign Up</a>
                 </li>
               </ul>
             </div>
