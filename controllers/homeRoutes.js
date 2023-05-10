@@ -68,9 +68,9 @@ router.get("/rooms/:id", async (req, res) => {
 });
 
 // Render user dashboard with reservations
-router.get("/users/:user_id/reservations", authRequired, async (req, res) => {
+router.get("/dashboard", authRequired, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.params.user_id, {
+    const userData = await User.findByPk(req.session.user_id, {
       include: [{ model: Reservation }],
     });
 
