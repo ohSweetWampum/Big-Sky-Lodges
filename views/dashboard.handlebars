@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <!-- put any CSS files here -->
+</head>
+<body>
+    <h1>Welcome, {{user.username}}!</h1>
+    <h2>Your Reservations</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Room</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each user.reservations}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{room.name}}</td>
+                <td>{{startDate}}</td>
+                <td>{{endDate}}</td>
+                <td>
+                    <button class="update-reservation-btn" data-id="{{id}}">Update</button>
+                    <button class="delete-reservation-btn" data-id="{{id}}">Delete</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <!-- put any JavaScript files here -->
+</body>
+</html>
