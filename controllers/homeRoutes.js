@@ -85,13 +85,20 @@ router.get("/users/:user_id/reservations", authRequired, async (req, res) => {
   }
 });
 
-// Render login/signup page
+// Render login page
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/dashboard");
     return;
   }
   res.render("userLogin");
+});
+
+module.exports = router;
+
+// render signUp page
+router.get("/signup", (req, res) => {
+  res.render("userSignup");
 });
 
 module.exports = router;

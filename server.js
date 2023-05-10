@@ -23,8 +23,9 @@ const sess = {
     db: sequelize,
   }),
 };
-app.use("/api/users", userAuthRoutes);
+
 app.use(session(sess));
+app.use("/api/users", userAuthRoutes);
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");

@@ -19,18 +19,15 @@ async function userSignup(event) {
     if (response.ok) {
       document.location.replace("/");
     } else {
-      alert("Sign-up failed.");
+      const data = await response.json();
+      console.error("Sign-up error:", data.error);
+      alert(data.message);
     }
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const loginForm = document.querySelector(".login-form");
   const signupForm = document.querySelector(".signup-form");
-
-  if (loginForm) {
-    loginForm.addEventListener("submit", userLogin);
-  }
 
   if (signupForm) {
     signupForm.addEventListener("submit", userSignup);

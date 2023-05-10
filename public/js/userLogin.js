@@ -19,3 +19,14 @@ async function userLogin(event) {
     }
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loginLink = document.querySelector(".login-link");
+
+  if (loginLink) {
+    loginLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      document.location.replace("/login");
+    });
+  }
+});

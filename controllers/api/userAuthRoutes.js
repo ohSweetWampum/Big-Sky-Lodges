@@ -4,9 +4,11 @@ const { authRequired } = require("../../utils/authenticator");
 
 // signup a new user
 router.post("/signup", async (req, res) => {
+  console.log("Signup route called");
   try {
+    console.log("Request body:", req.body);
     const signupUser = await User.create(req.body);
-
+    console.log("Extracted fields:", { username, email, password });
     req.session.save(() => {
       req.session.user_id = signupUser.id;
       req.session.username = signupUser.username;
@@ -15,7 +17,8 @@ router.post("/signup", async (req, res) => {
       res.status(200).json(signupUser);
     });
   } catch (err) {
-    res.status(400).json(err);
+    console.error(err);
+    res.status(400).json({ message: "Sign-up failed.", error: err.message });
   }
 });
 
