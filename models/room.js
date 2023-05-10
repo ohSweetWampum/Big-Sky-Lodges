@@ -5,7 +5,7 @@ class Room extends Model {}
 
 Room.init(
   {
-  id: {
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
@@ -28,15 +28,15 @@ Room.init(
         allowNull: false,
     },
     bed_size: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     room_size: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DECIMAL,
         allowNull: false,
     },
     branch_id: {
