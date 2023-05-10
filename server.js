@@ -3,6 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
+const userAuthRoutes = require("./controllers/api/userAuthRoutes");
 // const helpers = require('./utils/helpers');
 
 const sequelize = require("./config/connection");
@@ -22,7 +23,7 @@ const sess = {
     db: sequelize,
   }),
 };
-
+app.use("/api/users", userAuthRoutes);
 app.use(session(sess));
 
 app.engine("handlebars", hbs.engine);
