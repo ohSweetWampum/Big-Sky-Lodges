@@ -8,7 +8,7 @@ router.post("/signup", async (req, res) => {
   try {
     console.log("Request body:", req.body);
     const signupUser = await User.create(req.body);
-    console.log("Extracted fields:", { username, email, password });
+
     req.session.save(() => {
       req.session.user_id = signupUser.id;
       req.session.username = signupUser.username;
