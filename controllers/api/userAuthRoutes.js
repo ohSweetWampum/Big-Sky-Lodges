@@ -4,7 +4,9 @@ const { authRequired } = require("../../utils/authenticator");
 
 // signup a new user
 router.post("/signup", async (req, res) => {
+  console.log("Signup route called");
   try {
+    console.log("Request body:", req.body);
     const signupUser = await User.create(req.body);
 
     req.session.save(() => {
@@ -15,7 +17,8 @@ router.post("/signup", async (req, res) => {
       res.status(200).json(signupUser);
     });
   } catch (err) {
-    res.status(400).json(err);
+    console.error(err);
+    res.status(400).json({ message: "Sign-up failed.", error: err.message });
   }
 });
 
@@ -25,14 +28,14 @@ router.post("/login", async (req, res) => {
     console.log("Request body:", req.body);
 
     const loginUser = await User.findOne({
-      where: { email: req.body.email },
+      where: { username: req.body.username }, // Change this line from 'email' to 'username'
     });
 
     console.log("Login user:", loginUser);
 
     if (!loginUser) {
       res.status(400).json({
-        message: "Incorrect email or/and password. Please enter again.",
+        message: "Incorrect username or/and password. Please enter again.",
       });
       return;
     }
@@ -41,7 +44,7 @@ router.post("/login", async (req, res) => {
 
     if (!validPassword) {
       res.status(400).json({
-        message: "Incorrect email or/and password. Please enter again.",
+        message: "Incorrect username or/and password. Please enter again.",
       });
       return;
     }
