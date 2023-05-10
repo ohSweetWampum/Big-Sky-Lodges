@@ -20,35 +20,7 @@ router.get("/branch/:id", async (req, res) => {
       include: [
         {
           model: Room,
-          attributes: [
-            "id",
-            "room_type",
-            "price",
-            "max_occupancy",
-            "branch_id",
-            "num_beds",
-            "bed_size",
-            "room_size",
-            "wifi",
-            "tv_with_cable",
-            "air_conditioning",
-            "mini_bar",
-          ],
-        },
-        {
-          model: Reservation,
-          attributes: [
-            "id",
-            "check_in_date",
-            "check_out_date",
-            "user_id",
-            "room_id",
-          ],
-          include: {
-            model: User,
-            attributes: ["username"],
-          },
-        },
+        }
       ],
     });
 
