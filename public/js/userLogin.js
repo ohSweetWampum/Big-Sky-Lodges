@@ -36,3 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
     loginForm.addEventListener("submit", userLogin);
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const signupButton = document.querySelector(".signup-button");
+
+  if (signupButton) {
+    signupButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      document.location.replace("/signup");
+    });
+  }
+});
