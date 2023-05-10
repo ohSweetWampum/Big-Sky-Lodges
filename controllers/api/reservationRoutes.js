@@ -16,12 +16,7 @@ router.get("/users/:user_id/reservations", authRequired, async (req, res) => {
           attributes: ["username"],
         },
         {
-          model: Room,
-          attributes: ["room_type", "price", "capacity"],
-          include: {
-            model: Branch,
-            attributes: ["name", "location"],
-          },
+          model: Room
         },
       ],
     });

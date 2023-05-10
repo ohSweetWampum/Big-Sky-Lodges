@@ -18,13 +18,12 @@ router.get("/branches/:branch_id/rooms", async (req, res) => {
   }
 });
 
-// Get information for a specific room
-router.get("/rooms/:id", async (req, res) => {
+// Get information for a specific room of a specific 
+router.get("/branches/:branch_id/rooms/:id", async (req, res) => {
   try {
     const room = await Room.findByPk(req.params.id, {
-      include: {
-        model: Branch,
-        attributes: ["name", "location"],
+      where: {
+        branch_id: req.params.branch_id,
       },
     });
 
