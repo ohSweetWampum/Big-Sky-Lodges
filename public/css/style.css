@@ -74,3 +74,10 @@ button:hover{
 #card-title,#card-text,#card-descrip{
     color: black;
 }
+.card-img-top{
+   width: 400px;
+   height: 300px;
+}
+.card{
+    height: 300px;
+}
