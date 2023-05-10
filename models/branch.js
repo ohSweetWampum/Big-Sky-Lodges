@@ -22,6 +22,10 @@ Branch.init(
         location: {
             type: DataTypes.TEXT,
             allowNull: false,
+        },
+        image_path: {
+            type: DataTypes.TEXT,
+            allowNull: false
         }
     },
     {
