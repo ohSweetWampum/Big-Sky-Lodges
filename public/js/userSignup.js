@@ -26,6 +26,7 @@ async function userSignup(event) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const signupLink = document.querySelector(".signup-link");
+  const signupForm = document.querySelector(".signup-form");
 
   if (signupLink) {
     signupLink.addEventListener("click", (event) => {
@@ -33,9 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.location.replace("/signup");
     });
   }
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const signupForm = document.querySelector(".signup-form");
 
   if (signupForm) {
     signupForm.addEventListener("submit", userSignup);
