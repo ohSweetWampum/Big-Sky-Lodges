@@ -11,26 +11,33 @@
   <header class="bg-primary text-white text-center py-4">
     <h1>Big Sky Lodges</h1>
   </header>
-  
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">Big Sky Lodges</a>
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Account</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Book Now</a></li>
-        {{#if loggedIn}}
-          <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
-        {{else}}
-          <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Sign Up</a></li>
-        {{/if}}
-      </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Big Sky Lodges</a>
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Account</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Book Now</a></li>
+      {{#if loggedIn}}
+        <li class="nav-item"><a class="nav-link" id="logout" href="#">Logout</a></li>
+      {{else}}
+        <li class="nav-item"><a class="nav-link" href="#" class="login-form">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" class="signup-form">Sign Up</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</nav>
+<main>
+ <div>
+      {{{body}}}
     </div>
-  </nav>
-
-  {{{body}}}
+</main>
+<script src="/js/sendToLogin.js"></script>
+  {{#if loggedIn}}
+  <script src="/js/userLogout.js"></script>
+  {{/if}}
+ 
 
 </body>
 </html>
