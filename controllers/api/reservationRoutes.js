@@ -32,7 +32,7 @@ router.get("/users/:user_id/reservations", authRequired, async (req, res) => {
 router.post("/users/:user_id/reservations", authRequired, async (req, res) => {
   try {
     const { check_in_date, check_out_date, room_id } = req.body;
-
+    console.log(authRequired);
     // Check for conflicting reservations
     const conflictingReservations = await Reservation.count({
       where: {
@@ -51,6 +51,7 @@ router.post("/users/:user_id/reservations", authRequired, async (req, res) => {
         ],
       },
     });
+    console.log(conflictingReservations)
 
     if (conflictingReservations > 0) {
       res.status(400).json({
@@ -60,7 +61,10 @@ router.post("/users/:user_id/reservations", authRequired, async (req, res) => {
     }
 
     const newReservation = await Reservation.create({
-      ...req.body,
+      check_in_date: req.body.check_in_date,
+	    check_out_date: req.body.check_out_date,
+	    num_guests: req.body.num_guests,
+	    room_id: req.body.room_id,
       user_id: req.params.user_id,
     });
 
