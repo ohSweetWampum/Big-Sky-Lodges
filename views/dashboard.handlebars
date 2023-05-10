@@ -1,0 +1,34 @@
+
+
+    <h1>Welcome, {{user.username}}!</h1>
+    <h2>Your Reservations</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Room</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each user.reservations}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{room.name}}</td>
+                <td>{{startDate}}</td>
+                <td>{{endDate}}</td>
+                <td>
+                    <button class="update-reservation-btn" data-id="{{id}}">Update</button>
+                    <button class="delete-reservation-btn" data-id="{{id}}">Delete</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <!-- put any JavaScript files here -->
+
+
+

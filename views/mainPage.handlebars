@@ -1,50 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <title>Big Sky Lodges</title>
-</head>
-<body>
-  <header class="bg-primary text-white text-center py-4">
-    <h1>Big Sky Lodges</h1>
-  </header>
-  
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">Big Sky Lodges</a>
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Account</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Book Now</a></li>
-        {{#if loggedIn}}
-          <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
-        {{else}}
-          <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Sign Up</a></li>
-        {{/if}}
-      </ul>
-    </div>
-  </nav>
 
-  <div class="container mt-5">
-    <div class="row">
-      {{#each branches}}
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/400x200.png" class="card-img-top" alt="{{this.name}}">
-            <div class="card-body">
-              <h5 class="card-title">{{this.name}}</h5>
-              <p class="card-text">{{this.location}}</p>
-              <p class="card-text">{{this.description}}</p>
-            </div>
+<div class="container mt-5">
+  <div class="row">
+    {{#each branches}}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/400x200.png" class="card-img-top" alt="{{this.name}}">
+          <div class="card-body">
+            <h5 class="card-title">{{this.name}}</h5>
+            <p class="card-text">{{this.location}}</p>
+            <p class="card-text">{{this.description}}</p>
+
           </div>
         </div>
-      {{/each}}
-    </div>
+      </div>
+    {{/each}}
   </div>
-
-</body>
-</html>
+</div>

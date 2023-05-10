@@ -1,5 +1,9 @@
-body{
-    background-image:url("../images/The-Bolder-5093.jpg") ;
+.navbar{
+    color:rgb(157, 109, 245);
+}
+.custom-background{
+    background-image:url("../images/The-Bolder-5093.jpg"),
+    linear-gradient(to bottom right,rgb(102, 115, 116),rgb(236, 240, 37));
     background-size: cover;
     background-position: center;
 }
