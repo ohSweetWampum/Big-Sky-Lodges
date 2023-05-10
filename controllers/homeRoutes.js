@@ -94,8 +94,6 @@ router.get("/login", (req, res) => {
   res.render("userLogin");
 });
 
-module.exports = router;
-
 // render signUp page
 router.get("/signup", (req, res) => {
   res.render("userSignup");

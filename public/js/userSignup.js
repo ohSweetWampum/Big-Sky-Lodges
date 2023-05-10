@@ -26,10 +26,21 @@ async function userSignup(event) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const signupForm = document.querySelector(".signup-form");
+// document.addEventListener("DOMContentLoaded", () => {
+//   const signupForm = document.querySelector("#signup-form");
 
-  if (signupForm) {
-    signupForm.addEventListener("submit", userSignup);
+//   if (signupForm) {
+//     signupForm.addEventListener("submit", userSignup);
+//   }
+// });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const signupLink = document.querySelector(".signup-link");
+
+  if (signupLink) {
+    signupLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      document.location.replace("/signup");
+    });
   }
 });
