@@ -62,6 +62,10 @@ Room.init(
     mini_bar: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+    },
+    image_path: {
+        type: DataTypes.TEXT,
+        allowNull: false
     }
   },
   {
