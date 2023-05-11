@@ -75,9 +75,9 @@ router.post("/rooms/:id/availability", async (req, res) => {
       });
     }
     else{
-      res.status(200).json({
-        message: "The room is available!",
-      });
+      res.status(200).json(
+        conflictingReservations
+      );
     }
   } catch (err) {
     console.error(err);

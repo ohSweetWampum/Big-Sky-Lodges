@@ -99,5 +99,12 @@ router.get("/login", (req, res) => {
 router.get("/signup", (req, res) => {
   res.render("userSignup");
 });
+router.get("/booknow", async(req,res)=>{
+  
+  res.render('reservation',{
+    loggedIn: req.session.loggedIn,
 
+  })
+
+})
 module.exports = router;
