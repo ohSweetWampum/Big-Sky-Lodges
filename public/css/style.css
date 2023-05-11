@@ -118,6 +118,7 @@ button:hover{
     text-align: center;
   }
   .home h1{
+    padding-top: 50px;
     margin-left: 20%;
     font-size: 4rem;
     color: #fff;
@@ -173,3 +174,10 @@ label{
     align-items: center;
     margin-bottom: 50px;
   }
+#availability-response{
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 30px;
+    font-weight: bolder;
+}

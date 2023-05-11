@@ -3,7 +3,7 @@ const { User } = require("../../models");
 const { authRequired } = require("../../utils/authenticator");
 
 // signup a new user
-router.post("/signup", async (req, res) => {
+router.post("/users/signup", async (req, res) => {
   console.log("Signup route called");
   try {
     console.log("Request body:", req.body);
@@ -23,7 +23,7 @@ router.post("/signup", async (req, res) => {
 });
 
 // Login a user
-router.post("/login", async (req, res) => {
+router.post("/users/login", async (req, res) => {
   try {
     const loginUser = await User.findOne({
       where: { username: req.body.username },
@@ -62,7 +62,7 @@ router.post("/login", async (req, res) => {
 });
 
 // Logout a user
-router.post("/logout", authRequired, (req, res) => {
+router.post("/users/logout", authRequired, (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
