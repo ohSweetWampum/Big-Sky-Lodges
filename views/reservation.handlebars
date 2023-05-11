@@ -1,0 +1,112 @@
+
+
+
+<section class="home_section">
+    <div class="overlay">
+        <div class="container">
+            <div class="home">
+                  <h1><span>Book a room<br></span> Big Sky lodge discover<span> your place</span> <br><span>in the </span> sky</h1>
+                <div class="home_b">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+
+
+<div id="all-bookings-wraper">
+    <div class="booking-form-wrapper">
+
+
+<form id="booking-form">
+   <label for="check-in">Check-in date:</label>
+    <input type="date" id="check-in" name="check-in" required>
+
+    <label for="check-out">Check-out date:</label>
+    <input type="date" id="check-out" name="check-out" required>
+    <label for="branch">Hotel Branch:</label>
+    <select id="branch" name="branch" required>
+        <option value="branch1">Bozeman</option>
+        <option value="branch2">Missoula</option>
+        <option value="branch3">Whitefish</option>
+        <option value="branch3">Billings</option>
+        <option value="branch3">Great Falls</option>
+    </select>
+    <label for="room-type">Room Type:</label>
+    <select id="room-type" name="room-type" required>
+        <option value="single">Single</option>
+          <option value="double">Double</option>
+        <option value="suite">Suite</option>
+        <option value="deluxe">Deluxe</option>
+    </select>
+    <label for="num-guests">Number of Guests:</label>
+    <select id="num-guests" name="num-guests" required>
+
+
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+
+    <button id="check-avail" type="submit">Check Availability</button>  
+    <button id="book-now" type="button">Book Now</button>
+    <p id="availability-response"> Room Available </p>
+</form>
+</div>
+</div>
+<script src="/js/reservation.js"></script>
+
+
+
+
+
+{{!-- <h1>Book a Room</h1>
+<form id="booking-form">
+    <label for="check-in">Check-in date:</label>
+    <input type="date" id="check-in" name="check-in" required>
+
+    <label for="check-out">Check-out date:</label>
+    <input type="date" id="check-out" name="check-out" required>
+
+    <label for="room-type">Room Type:</label>
+    <select id="room-type" name="room-type" required>
+        
+        <option value="single">Single</option>
+        <option value="double">Double</option>
+        <option value="suite">Studio</option>
+        <option value="suite">Deluxe</option>
+    </select>
+
+    <label for="num-guests">Number of Guests:</label>
+    <select id="num-guests" name="num-guests" required>
+       
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+
+    <label for="branch">Hotel Branch:</label>
+    <select id="branch" name="branch" required>
+        
+        <option value="branch1">Bozeman</option>
+        <option value="branch2">Missoula</option>
+        <option value="branch3">Whitefish</option>
+        <option value="branch3">Billings</option>
+        <option value="branch3">Great Falls</option>
+
+
+    </select>
+
+    <button type="submit">Check Availability</button>
+</form>
+
+<div id="available-rooms">
+    <!-- Available rooms will be displayed here -->
+</div> --}}
+
