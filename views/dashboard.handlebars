@@ -1,47 +1,39 @@
- <div class="dashboard-body">
-        <h2>Dashboard</h2>
-        <div class="header-card">
-            <h1>Welcome {{username}} </h1>
-            <span id="your-reservation">Your Reservations.</span>
-            <div class="reservation-list">
-                <div class="list1">
-                    <div class="row">
-                        <h4>Recent Bookings</h4>
+ <div class="dashboard-body is-flex is-flex-wrap-wrap is-justify-content-center">
+    <h2 class="dashboard">Dashboard</h2>
+    <div class="header-card">
+        <h1>Welcome {{username}}</h1>
+        {{!-- <span id="your-reservation">Your Reservations.</span> --}}
+        <div class="reservation-list">
+            <div class="list1">
+                <div class="row">
+                    <h4 id="booking-title">Recent Bookings</h4>
 
-                    </div>
-                    <table class="table">
-                        <thead>
-                            <th>Reservations</th>
-                            <th>Name</th>
-                            <th>Check-in </th>
-                            <th>Check-out </th>
-                            <th>Room type</th>
-                        </thead>
-                    </table>
-                    <tr>
-                        <td>{{Reservations.id}}</td>
-                        <td>{{username}}</td>
-                        <td>{{checkin-date}} </td>
-                        <td>{{checkout-date}} </td>
-                        <td>{{room-type}}</td> <button class="update-btn">Update</button><button class="delete-btn">delete</button>
-                        </tr>
-                    </table>
-                   
                 </div>
-                 <div class="col-md-4 mb-4">
-                        <div class="card" id="reservation-detail">
-                          <img src="https://via.placeholder.com/400x200.png" class="card-img-top" alt="{{this.name}}">
-                          <div class="card-body">
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <p class="card-text">{{this.location}}</p>
-                            <p class="card-text">{{this.description}}</p>
+                <table class="table">
+                    <thead>
+                        <th>Reservation Id</th>
+                        <th>Room type</th>
+                        <th>Check-in Date</th>
+                        <th>Check-out Date</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody id="reservationDisplay">
+                    {{#each users as |user|}} 
+                        <tr>
+                            <td>{{id}}</td>
+                            <td>{{room.room_type}}</td>
+                            <td>{{check_in_date}} </td>
+                            <td>{{check_out_date}} </td>
+                            <td><button class="delete-btn delete-reservation-btn" data-id="{{id}}">delete</button></td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
                 
-                          </div>
-                        </div>
-                      </div>
             </div>
         </div>
     </div>
+</div>
 
 
    

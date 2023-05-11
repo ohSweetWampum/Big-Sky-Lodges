@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="row">
+    {{#each rooms}}
+      <div class="col-md-5 mb-4">
+        <div class="card">
+            <h5 class="card-title room-card-title">Room Type: {{this.room_type}}</h5>
+          <img src="{{this.image_path}}" width="200" height="250" class="card-img-top" alt="{{this.room_type}}">
+          <div class="card-body">  
+            <p class="card-text">Max Occupancy: <strong>{{this.max_occupancy}}</strong></p>
+            <p class="card-text">Number of beds: <strong>{{this.num_beds}}</strong></p>
+            <p class="card-text">Bed Size: <strong>{{this.bed_size}}</strong></p>
+            {{#if this.wifi}}
+                <p class="card-text">Wifi: ✅</p>
+            {{else}}
+                <p class="card-text">Wifi: ❌</p>
+            {{/if}}
+            {{#if this.tv_with_cable}}
+                <p class="card-text">TV With Cable: ✅</p>
+            {{else}}
+                <p class="card-text">TV With Cable: ❌</p>
+            {{/if}}
+            {{#if this.air_conditioning}}
+                <p class="card-text">Air Conditioning: ✅</p>
+            {{else}}
+                <p class="card-text">Air Conditioning: ❌</p>
+            {{/if}}
+            {{#if this.min_bar}}
+                <p class="card-text">Mini-bar: ✅</p>
+            {{else}}
+                <p class="card-text">Mini_bar: ❌</p>
+            {{/if}}
+            <p class="card-text"><strong>Price: {{this.price}}</strong></p>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

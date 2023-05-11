@@ -31,19 +31,7 @@
     "nodemon": "^2.0.22",
     "sequelize": "^6.31.1"
   },
-  "devDependencies": {},
-  "engines":{
+  "engines": {
     "npm": "8.19.4"
   }
 }
-
-
-
-
-
-
-
-
-
-
-
