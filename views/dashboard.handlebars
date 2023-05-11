@@ -18,15 +18,15 @@
                         <th>Action</th>
                     </thead>
                     <tbody id="reservationDisplay">
-                    {{#each users as |user|}} 
-                        <tr>
-                            <td>{{id}}</td>
-                            <td>{{room.room_type}}</td>
-                            <td>{{check_in_date}} </td>
-                            <td>{{check_out_date}} </td>
-                            <td><button class="delete-btn delete-reservation-btn" data-id="{{id}}">delete</button></td>
-                        </tr>
-                    {{/each}}
+   {{#each reservations}} 
+  <tr>
+    <td>{{this.id}}</td>
+    <td>{{this.room.room_type}}</td>
+    <td>{{this.check_in_date}} </td>
+    <td>{{this.check_out_date}} </td>
+    <td><button class="delete-btn delete-reservation-btn" data-id="{{this.id}}">delete</button></td>
+  </tr>
+{{/each}}
                     </tbody>
                 </table>
                 

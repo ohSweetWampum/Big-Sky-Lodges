@@ -87,10 +87,11 @@ router.get("/dashboard", authRequired, async (req, res) => {
         },
       ],
     });
-    const users = userData.map((user) => user.get({ plain: true }));
-    // res.json(users);
+    const reservations = userData.map((reservation) =>
+      reservation.get({ plain: true })
+    );
     res.render("dashboard", {
-      users,
+      reservations,
       username: req.session.username,
       loggedIn: req.session.loggedIn,
     });
