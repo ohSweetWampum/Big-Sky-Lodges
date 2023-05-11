@@ -18,13 +18,15 @@
                             <th>Room type</th>
                         </thead>
                     </table>
-                    <tr>
-                        <td>{{Reservations.id}}</td>
-                        <td>{{username}}</td>
-                        <td>{{checkin-date}} </td>
-                        <td>{{checkout-date}} </td>
-                        <td>{{room-type}}</td> <button class="update-btn">Update</button><button class="delete-btn">delete</button>
-                        </tr>
+                        {{!-- {{#each posts as |post|}} --}}
+                            <tr>
+                                <td>{{Reservations.id}}</td>
+                                <td>{{username}}</td>
+                                <td>{{checkin-date}} </td>
+                                <td>{{checkout-date}} </td>
+                                <td>{{room-type}}</td> <button class="update-btn">Update</button><button class="delete-btn">delete</button>
+                            </tr>
+                        {{!-- {{/each}} --}}
                     </table>
                    
                 </div>

@@ -69,17 +69,34 @@ router.get("/rooms/:id", async (req, res) => {
 
 // Render user dashboard with reservations
 router.get("/dashboard", authRequired, async (req, res) => {
-  try {
+  try{
+    console.log(req.session.user_id)
+    const userData = await Reservation.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+        {
+          model: Room
+        },
+      ],
+    });
+    res.json(userData);
+ /* try {
     const userData = await User.findByPk(req.session.user_id, {
       include: [{ model: Reservation }],
     });
 
     const user = userData.get({ plain: true });
-
-    res.render("dashboard", {
+    res.json(userData)
+  /*  res.render("dashboard", {
       user,
       loggedIn: req.session.loggedIn,
-    });
+    });*/
   } catch (err) {
     res.status(500).json(err);
   }
