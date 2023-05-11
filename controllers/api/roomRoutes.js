@@ -6,13 +6,15 @@ const Op = require("sequelize").Op;
 // Get all rooms in a specific branch
 router.get("/branches/:branch_id/rooms", async (req, res) => {
   try {
-    const rooms = await Room.findAll({
+    const roomData = await Room.findAll({
       where: {
         branch_id: req.params.branch_id,
       },
     });
 
-    res.json(rooms);
+   // res.json(rooms);
+   const rooms = roomData.map((room) => room.get({ plain: true }));
+   res.render("roompage", {rooms})
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

@@ -3,8 +3,9 @@
   <div class="row">
     {{#each branches}}
       <div class="col-md-4 mb-4">
+        <a href="/api/branches/{{this.id}}/rooms">
         <div class="card">
-          <img src="{{this.image_path}}" class="card-img-top" alt="{{this.name}}">
+          <img src="{{this.image_path}}" width="250" height="200" class="card-img-top" alt="{{this.name}}">
           <div class="card-body">
             <h5 class="card-title">{{this.name}}</h5>
             <p class="card-text">{{this.location}}</p>
@@ -12,6 +13,7 @@
 
           </div>
         </div>
+        </a>
       </div>
     {{/each}}
   </div>
