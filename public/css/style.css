@@ -110,3 +110,110 @@ table th{
 #booking-title{
     padding-left: 20px;
 }
+
+
+.update-btn{
+    padding: 8px 14px;
+  background: rgb(116, 17, 173);
+  color: #fff;
+  text-transform: uppercase;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.delete-btn{
+    padding: 8px 14px;
+    background: rgb(116, 17, 173);
+    color:#fff;
+    text-transform: uppercase;
+    margin-right: 1rem;
+    cursor: pointer;
+
+}
+#your-reservation{
+    text-align: left;
+}
+button:hover{
+    background: rgba(56, 15, 88, 0.5);
+    transition: all 0.5s;
+}
+#reservation-detail{
+    float: right;
+    margin: left 15px;
+    width:50%;
+}
+.card-title,.card-text{
+    color: black;
+}
+
+
+
+.home_section{
+    /* background-image: url(/public/images/branch3.jpeg); */
+    background-size: cover;
+    height: 80vh;
+  }
+  .overlay{
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .home{
+    width: 1100px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .home h1{
+    margin-left: 20%;
+    font-size: 4rem;
+    color: #fff;
+    text-transform: capitalize;
+  }
+  .home span{
+    color: rgb(228, 151, 8);
+    text-align: center;
+  }
+.home{
+    width: 1100px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .home h1{
+      font-size: 4rem;
+      color: #fff;
+      text-transform: capitalize;
+      margin-bottom: 5rem;
+
+    }
+    .home span{
+      color: rgb(228, 151, 8);
+    }
+label{
+    font-size: 25px;
+}
+#book-now{
+    margin-top: 4rem;
+    display: flex;
+   justify-content: center;
+  border-radius: 50px;
+}
+#all-bookings-wrapper{
+    justify-content: center;
+    margin-left: 25%;
+    margin-bottom: 15px;
+  }
+  .booking-form-wrapper {
+    width: 100%;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+  }

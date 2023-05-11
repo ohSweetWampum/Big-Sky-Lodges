@@ -69,7 +69,7 @@ router.get("/rooms/:id", async (req, res) => {
 
 // Render user dashboard with reservations
 router.get("/dashboard", authRequired, async (req, res) => {
-  try{
+  try {
     const userData = await Reservation.findAll({
       where: {
         user_id: req.session.user_id,
@@ -82,13 +82,13 @@ router.get("/dashboard", authRequired, async (req, res) => {
         {
           model: Room,
           include: {
-            model: Branch
-          }
+            model: Branch,
+          },
         },
       ],
     });
     const users = userData.map((user) => user.get({ plain: true }));
-   // res.json(users);
+    // res.json(users);
     res.render("dashboard", {
       users,
       username: req.session.username,
@@ -99,10 +99,16 @@ router.get("/dashboard", authRequired, async (req, res) => {
   }
 });
 
+router.get("/booknow", async (req, res) => {
+  res.render("reservation", {
+    loggedIn: req.session.loggedIn,
+  });
+});
+
 // Render login page
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
-    console.log("login in home")
+    console.log("login in home");
     res.redirect("/");
     return;
   }
