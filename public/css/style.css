@@ -94,8 +94,6 @@ table th{
     padding: 0.2rem 0.8rem;
     font-size: 15px;
 }
-<<<<<<< HEAD
-=======
 
 .room-card-title{
     text-align:center;
@@ -114,7 +112,6 @@ table th{
 }
 
 
->>>>>>> main
 .update-btn{
     padding: 8px 14px;
   background: rgb(116, 17, 173);
@@ -153,27 +150,16 @@ button:hover{
 .home_section{
     /* background-image: url(/public/images/branch3.jpeg); */
     background-size: cover;
-<<<<<<< HEAD
-    height: 80vh;
-=======
     height: 40vh;
->>>>>>> main
   }
   .overlay{
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
   }
-<<<<<<< HEAD
-  
-  .home{
-    width: 1100px;
-    height: 80vh;
-=======
 
   .home{
     width: 1100px;
     height: 40vh;
->>>>>>> main
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -190,17 +176,6 @@ button:hover{
     color: rgb(228, 151, 8);
     text-align: center;
   }
-<<<<<<< HEAD
-.home{
-    width: 1100px;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-=======
 
   input[type="date"],
  select {
@@ -210,31 +185,17 @@ button:hover{
   }
 
 
->>>>>>> main
   .home h1{
       font-size: 4rem;
       color: #fff;
       text-transform: capitalize;
       margin-bottom: 5rem;
-<<<<<<< HEAD
-      
-=======
-
->>>>>>> main
     }
     .home span{
       color: rgb(228, 151, 8);
     }
 label{
     font-size: 25px;
-<<<<<<< HEAD
-}
-#book-now{
-    margin-top: 4rem;
-    display: flex;
-   justify-content: center;
-  border-radius: 50px;
-=======
     color: rgb(228, 151, 8);
 }
 #book-now,
@@ -247,7 +208,6 @@ label{
         padding: 10px;
         font-size: 16px; 
     
->>>>>>> main
 }
 #all-bookings-wrapper{
     justify-content: center;
@@ -262,7 +222,3 @@ label{
     align-items: center;
     margin-bottom: 50px;
   }
-<<<<<<< HEAD
-  
-=======
->>>>>>> main
