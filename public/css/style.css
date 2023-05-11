@@ -92,3 +92,35 @@ table th{
     padding: 0.2rem 0.8rem;
     font-size: 15px;
 }
+.update-btn{
+    padding: 8px 14px;
+  background: rgb(116, 17, 173);
+  color: #fff;
+  text-transform: uppercase;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.delete-btn{
+    padding: 8px 14px;
+    background: rgb(116, 17, 173);
+    color:#fff;
+    text-transform: uppercase;
+    margin-right: 1rem;
+    cursor: pointer;
+
+}
+#your-reservation{
+    text-align: left;
+}
+button:hover{
+    background: rgba(56, 15, 88, 0.5);
+    transition: all 0.5s;
+}
+#reservation-detail{
+    float: right;
+    margin: left 15px;
+    width:50%;
+}
+.card-title,.card-text{
+    color: black;
+}
