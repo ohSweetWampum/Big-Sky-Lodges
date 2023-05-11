@@ -1,44 +1,57 @@
-<h1>Book a Room</h1>
-<form id="booking-form">
-    <label for="check-in">Check-in date:</label>
-    <input type="date" id="check-in" name="check-in" required>
+<h1 class="text-center mb-4">Book a Room</h1>
+<form id="booking-form" class="container">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="check-in">Check-in date:</label>
+      <input type="date" class="form-control" id="check-in" name="check-in" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="check-out">Check-out date:</label>
+      <input type="date" class="form-control" id="check-out" name="check-out" required>
+    </div>
+  </div>
 
-    <label for="check-out">Check-out date:</label>
-    <input type="date" id="check-out" name="check-out" required>
-
-    <label for="room-type">Room Type:</label>
-    <select id="room-type" name="room-type" required>
-        
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="room-type">Room Type:</label>
+      <select id="room-type" name="room-type" class="form-select" required>
+        <option selected>Open this select menu</option>
         <option value="single">Single</option>
         <option value="double">Double</option>
         <option value="suite">Studio</option>
         <option value="suite">Deluxe</option>
-    </select>
+      </select>
+    </div>
 
-    <label for="num-guests">Number of Guests:</label>
-    <select id="num-guests" name="num-guests" required>
-       
+    <div class="form-group col-md-4">
+      <label for="num-guests">Number of Guests:</label>
+      <select id="num-guests" name="num-guests" class="form-select" required>
+        <option selected>Open this select menu</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
-    </select>
+      </select>
+    </div>
 
-    <label for="branch">Hotel Branch:</label>
-    <select id="branch" name="branch" required>
-        
+    <div class="form-group col-md-4">
+      <label for="branch">Hotel Branch:</label>
+      <select id="branch" name="branch" class="form-select" required>
+        <option selected>Open this select menu</option>
         <option value="branch1">Bozeman</option>
         <option value="branch2">Missoula</option>
         <option value="branch3">Whitefish</option>
-        <option value="branch3">Billings</option>
-        <option value="branch3">Great Falls</option>
+        <option value="branch4">Billings</option>
+        <option value="branch5">Great Falls</option>
+      </select>
+    </div>
+  </div>
 
-
-    </select>
-
-    <button type="submit">Check Availability</button>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary">Check Availability</button>
+  </div>
 </form>
 
-<div id="available-rooms">
+<div id="available-rooms" class="container mt-4">
     <!-- Available rooms will be displayed here -->
 </div>

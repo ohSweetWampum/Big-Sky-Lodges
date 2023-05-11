@@ -85,10 +85,41 @@ router.get("/dashboard", authRequired, async (req, res) => {
   }
 });
 
+// Render book now page
+router.get("/bookNow", async (req, res) => {
+  try {
+    // Fetch all branches, rooms, and reservations data using your models
+    const allBranches = await Branch.findAll({
+      include: [
+        {
+          model: Room,
+          include: [
+            {
+              model: Reservation,
+            },
+          ],
+        },
+      ],
+    });
+
+    // Convert data to plain JSON
+    const branches = allBranches.map((branch) => branch.get({ plain: true }));
+
+    // Render the book now page with the branches, rooms, and reservations data
+    res.render("bookNow", {
+      branches,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
 // Render login page
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
-    console.log("login in home")
+    console.log("login in home");
     res.redirect("/");
     return;
   }
