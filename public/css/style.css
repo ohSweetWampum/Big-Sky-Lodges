@@ -150,7 +150,7 @@ button:hover{
 .home_section{
     /* background-image: url(/public/images/branch3.jpeg); */
     background-size: cover;
-    height: 80vh;
+    height: 40vh;
   }
   .overlay{
     height: 100%;
@@ -159,7 +159,7 @@ button:hover{
 
   .home{
     width: 1100px;
-    height: 80vh;
+    height: 40vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -176,15 +176,15 @@ button:hover{
     color: rgb(228, 151, 8);
     text-align: center;
   }
-.home{
-    width: 1100px;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+
+  input[type="date"],
+ select {
+      width: 200px; 
+      height: 45px; 
+      padding: 10px;
   }
+
+
   .home h1{
       font-size: 4rem;
       color: #fff;
@@ -197,12 +197,18 @@ button:hover{
     }
 label{
     font-size: 25px;
+    color: rgb(228, 151, 8);
 }
-#book-now{
-    margin-top: 4rem;
-    display: flex;
-   justify-content: center;
-  border-radius: 50px;
+#book-now,
+#check-avail{
+   
+        display: block; 
+        width: 200px; 
+        height: 50px; 
+        margin: 0 auto; 
+        padding: 10px;
+        font-size: 16px; 
+    
 }
 #all-bookings-wrapper{
     justify-content: center;
