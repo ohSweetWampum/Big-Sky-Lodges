@@ -13,19 +13,21 @@
                         <thead>
                             <th>Reservations</th>
                             <th>Room type</th>
-                            <th>Check-in </th>
-                            <th>Check-out </th>
+                            <th>Check-in Date</th>
+                            <th>Check-out Date</th>
                             <th>Action</th>
                         </thead>
+                        <tbody id="reservationDisplay">
                         {{#each users as |user|}} 
                             <tr>
                                 <td>{{id}}</td>
                                 <td>{{room.room_type}}</td>
                                 <td>{{check_in_date}} </td>
                                 <td>{{check_out_date}} </td>
-                                <td><button class="update-btn">Update</button><button class="delete-btn">delete</button></td>
+                                <td><button class="delete-btn delete-reservation-btn" data-id="{{id}}">delete</button></td>
                             </tr>
                         {{/each}}
+                        </tbody>
                     </table>
                    
                 </div>
