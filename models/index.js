@@ -1,4 +1,4 @@
-const User = require("./user");
+const User = require("./User");
 const Branch = require("./branch");
 const Reservation = require("./reservation");
 const Room = require("./room");
