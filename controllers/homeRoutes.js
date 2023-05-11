@@ -70,7 +70,6 @@ router.get("/rooms/:id", async (req, res) => {
 // Render user dashboard with reservations
 router.get("/dashboard", authRequired, async (req, res) => {
   try{
-    console.log(req.session.user_id)
     const userData = await Reservation.findAll({
       where: {
         user_id: req.session.user_id,
@@ -81,22 +80,20 @@ router.get("/dashboard", authRequired, async (req, res) => {
           attributes: ["username"],
         },
         {
-          model: Room
+          model: Room,
+          include: {
+            model: Branch
+          }
         },
       ],
     });
-    res.json(userData);
- /* try {
-    const userData = await User.findByPk(req.session.user_id, {
-      include: [{ model: Reservation }],
-    });
-
-    const user = userData.get({ plain: true });
-    res.json(userData)
-  /*  res.render("dashboard", {
-      user,
+    const users = userData.map((user) => user.get({ plain: true }));
+   // res.json(users);
+    res.render("dashboard", {
+      users,
+      username: req.session.username,
       loggedIn: req.session.loggedIn,
-    });*/
+    });
   } catch (err) {
     res.status(500).json(err);
   }
