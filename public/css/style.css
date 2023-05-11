@@ -52,11 +52,12 @@ button:hover{
     color:rgb(157, 109, 245);
 }
 .custom-background{
-    background-image:url(“/images/The-Bolder-5093.jpg”),
+    background-image:url("/images/The-Bolder-5093.jpg"),
     linear-gradient(to bottom right,rgb(102, 115, 116),rgb(236, 240, 37));
     background-size: cover;
     background-position: center;
 }
+
 .dashboard-body{
     width: 70%;
     padding: 1rem;
@@ -91,4 +92,9 @@ table{
 table th{
     padding: 0.2rem 0.8rem;
     font-size: 15px;
+}
+
+.room-card-title{
+    text-align:center;
+    margin-top: 10px;
 }
