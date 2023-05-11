@@ -4,20 +4,21 @@ const branch = document.querySelector('#branch').value;
 const room_id = document.querySelecto('#room-type').value;
 const num_guests = document.querySelector('#num-guest').value;
 const check_available= document.querySelector('#check-avail').value;
+const bookNow = document.querySelector('#book-now');
 
 
-async function reservationSubmission(event) {
-    event.preventDefault();
+const reservationSubmission = async ()=> {
+    preventDefault();
 
     if(check_in && check_out && branch && room_id && num_guests ) {
-        const response = fetch('api/booknow',{
+        const response = await fetch("api/users/:user_id/reservations",{
         method: 'Post',
         body: JSON.stringify({check_in, check_out,room_id,num_guests}),
         headers: {
             'Content-Type': 'application/json',
         },
     });
-   
+   console.log(response);
     
 
     if (response.ok) {
@@ -27,6 +28,4 @@ async function reservationSubmission(event) {
     } 
 }
 };
-
-document
-.querySelector('#book-now').addEventListener('click',reservationSubmission);
+bookNow.addEventListener('click',reservationSubmission);
