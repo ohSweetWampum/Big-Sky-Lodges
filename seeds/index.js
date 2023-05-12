@@ -1,7 +1,6 @@
 //may need to adjust the order of seeding if we run into an error like: cannot insert row....
 const seedBranchData = require("./seedBranchData");
 const seedRoomData = require("./seedRoomData");
-const seedReservationData = require("./seedReservationData");
 
 const sequelize = require("../config/connection");
 
@@ -15,9 +14,6 @@ const seedAll = async () => {
 
     await seedRoomData();
     console.log("\n----- ROOMS SEEDED -----\n");
-    
-    await seedReservationData();
-    console.log("\n----- RESERVATIONS SEEDED -----\n");  
   }catch(err){
     console.log("Error in seeding Database")
   } 

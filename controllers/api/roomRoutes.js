@@ -12,7 +12,6 @@ router.get("/branches/:branch_id/rooms", async (req, res) => {
       },
     });
 
-   // res.json(rooms);
    const rooms = roomData.map((room) => room.get({ plain: true }));
    res.render("roompage", {rooms})
   } catch (err) {
@@ -50,8 +49,8 @@ router.get("/rooms/:id", async (req, res) => {
 // Check the availability of a specific room
 router.post("/rooms/:id/availability", async (req, res) => {
   try {
+    
   const { check_in_date, check_out_date } = req.body;
-    console.log(check_in_date, check_out_date, req.params.id)
     // Check for conflicting reservations
     const conflictingReservations = await Reservation.count({
       where: {
@@ -70,17 +69,9 @@ router.post("/rooms/:id/availability", async (req, res) => {
         ],
       },
     });
-
-    if (conflictingReservations > 0) {
-      res.status(400).json({
-        message: "The room is already reserved during the requested period",
-      });
-    }
-    else{
-      res.status(200).json(
-        conflictingReservations
-      );
-    }
+    res.status(200).json(
+      conflictingReservations
+    );
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

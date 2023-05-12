@@ -112,13 +112,13 @@ const roomData = [
     num_beds: 1,
     bed_size: "King",
     room_size: "24*30",
-    price: 170,
+    price: 150,
     branch_id: 2,
     wifi: true,
     tv_with_cable: true,
     air_conditioning: true,
     mini_bar: true,
-    image_path:"/images/deluxe-room2.jpg"
+    image_path:"/images/deluxe-room-with-tv3.jpg"
   },
   {
     room_num: 101,
