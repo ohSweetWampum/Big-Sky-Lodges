@@ -1,4 +1,4 @@
-const { Room } = require('../models');
+const { Room } = require("../models");
 const roomData = [
   {
     room_num: 101,
@@ -13,7 +13,7 @@ const roomData = [
     tv_with_cable: false,
     air_conditioning: false,
     mini_bar: false,
-    image_path:"/images/single-room3.jpg"
+    image_path: "/images/single-room3.jpg",
   },
   {
     room_num: 102,
@@ -28,7 +28,7 @@ const roomData = [
     tv_with_cable: false,
     air_conditioning: false,
     mini_bar: true,
-    image_path:"/images/double-room1.jpg"
+    image_path: "/images/double-room1.jpg",
   },
   {
     room_num: 103,
@@ -43,7 +43,7 @@ const roomData = [
     tv_with_cable: true,
     air_conditioning: false,
     mini_bar: false,
-    image_path:"/images/studio-with-tv1.jpg"
+    image_path: "/images/studio-with-tv1.jpg",
   },
   {
     room_num: 104,
@@ -58,7 +58,7 @@ const roomData = [
     tv_with_cable: true,
     air_conditioning: true,
     mini_bar: true,
-    image_path:"/images/deluxe-room-with-tv3.jpg"
+    image_path: "/images/deluxe-room-with-tv3.jpg",
   },
   {
     room_num: 101,
@@ -73,7 +73,7 @@ const roomData = [
     tv_with_cable: true,
     air_conditioning: false,
     mini_bar: false,
-    image_path:"/images/single-room-with-tv1.jpg"
+    image_path: "/images/single-room4.jpg",
   },
   {
     room_num: 102,
@@ -88,7 +88,7 @@ const roomData = [
     tv_with_cable: false,
     air_conditioning: false,
     mini_bar: true,
-    image_path:"/images/double-room2.jpg"
+    image_path: "/images/double-room2.jpg",
   },
   {
     room_num: 103,
@@ -103,7 +103,7 @@ const roomData = [
     tv_with_cable: true,
     air_conditioning: false,
     mini_bar: false,
-    image_path:"/images/studio-with-tv2.jpg"
+    image_path: "/images/studio-with-tv2.jpg",
   },
   {
     room_num: 104,
@@ -118,7 +118,7 @@ const roomData = [
     tv_with_cable: true,
     air_conditioning: true,
     mini_bar: true,
-    image_path:"/images/deluxe-room-with-tv3.jpg"
+    image_path: "/images/deluxe-room-with-tv3.jpg",
   },
   {
     room_num: 101,
@@ -133,7 +133,7 @@ const roomData = [
     tv_with_cable: false,
     air_conditioning: true,
     mini_bar: false,
-    image_path:"/images/single-room6.jpg"
+    image_path: "/images/single-room6.jpg",
   },
   {
     room_num: 102,
@@ -148,7 +148,7 @@ const roomData = [
     tv_with_cable: false,
     air_conditioning: true,
     mini_bar: true,
-    image_path:"/images/double-room3.jpg"
+    image_path: "/images/double-room3.jpg",
   },
   {
     room_num: 103,
@@ -163,7 +163,7 @@ const roomData = [
     tv_with_cable: false,
     air_conditioning: false,
     mini_bar: true,
-    image_path:"/images/studio4.jpg"
+    image_path: "/images/studio4.jpg",
   },
   {
     room_num: 104,
@@ -178,7 +178,7 @@ const roomData = [
     tv_with_cable: true,
     air_conditioning: true,
     mini_bar: true,
-    image_path:"/images/deluxe-room-with-tv2.jpg"
+    image_path: "/images/deluxe-room-with-tv2.jpg",
   },
   {
     room_num: 101,
@@ -193,7 +193,7 @@ const roomData = [
     tv_with_cable: false,
     air_conditioning: false,
     mini_bar: false,
-    image_path:"/images/single-room6.jpg"
+    image_path: "/images/single-room6.jpg",
   },
   {
     room_num: 102,
@@ -208,7 +208,7 @@ const roomData = [
     tv_with_cable: false,
     air_conditioning: true,
     mini_bar: true,
-    image_path:"/images/double-room2.jpg"
+    image_path: "/images/double-room2.jpg",
   },
   {
     room_num: 103,
@@ -223,7 +223,7 @@ const roomData = [
     tv_with_cable: true,
     air_conditioning: false,
     mini_bar: true,
-    image_path:"/images/studio-with-tv3.jpg"
+    image_path: "/images/studio-with-tv3.jpg",
   },
   {
     room_num: 104,
@@ -238,7 +238,7 @@ const roomData = [
     tv_with_cable: true,
     air_conditioning: true,
     mini_bar: true,
-    image_path:"/images/deluxe-room3.jpg"
+    image_path: "/images/deluxe-room3.jpg",
   },
   {
     room_num: 101,
@@ -253,7 +253,7 @@ const roomData = [
     tv_with_cable: true,
     air_conditioning: false,
     mini_bar: false,
-    image_path:"/images/single-room4.jpg"
+    image_path: "/images/single-room4.jpg",
   },
   {
     room_num: 102,
@@ -268,7 +268,7 @@ const roomData = [
     tv_with_cable: false,
     air_conditioning: true,
     mini_bar: true,
-    image_path:"/images/double-room2.jpg"
+    image_path: "/images/double-room2.jpg",
   },
   {
     room_num: 103,
@@ -283,7 +283,7 @@ const roomData = [
     tv_with_cable: true,
     air_conditioning: true,
     mini_bar: true,
-    image_path:"/images/studio-with-tv2.jpg"
+    image_path: "/images/studio-with-tv2.jpg",
   },
   {
     room_num: 104,
@@ -298,7 +298,7 @@ const roomData = [
     tv_with_cable: true,
     air_conditioning: true,
     mini_bar: false,
-    image_path:"/images/deluxe-room4.jpg"
+    image_path: "/images/deluxe-room4.jpg",
   },
 ];
 
