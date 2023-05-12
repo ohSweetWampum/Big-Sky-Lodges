@@ -1,43 +1,40 @@
- <div class="dashboard-body is-flex is-flex-wrap-wrap is-justify-content-center">
-    
-    <h2 class="dashboard">Dashboard</h2> 
-    
-    <div class="header-card custom-header-card">
-        <h1>Welcome {{username}}</h1>
-        <h4 id="booking-title">Recent Bookings</h4>
-        <div class="row justify-content-center"> <div class="col-auto"></div>
-        
-        <div class="reservation-list">
-            <div class="list1">
-                <table class="table">
-                    <thead>
-                        <th>Reservation Id</th>
-                        <th>Room type</th>
-                        <th>Check-in Date</th>
-                        <th>Check-out Date</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody id="reservationDisplay">
-   {{#each reservations}} 
-  <tr>
-    <td>{{this.id}}</td>
-    <td>{{this.room.room_type}}</td>
-    <td>{{this.check_in_date}} </td>
-    <td>{{this.check_out_date}} </td>
-    <td><button class="delete-btn delete-reservation-btn" data-id="{{this.id}}">delete</button></td>
-  </tr>
-{{/each}}
-                    </tbody>
-                </table>
-                
-            </div>
+<div class="dashboard-body is-flex is-flex-wrap-wrap is-justify-content-center">
+
+  <h2 class="dashboard">Dashboard</h2>
+
+  <div class="header-card custom-header-card">
+    <h1>Welcome {{username}}</h1>
+    <h4 id="booking-title">Recent Bookings</h4>
+    <div class="row justify-content-center">
+      <div class="col-auto"></div>
+
+      <div class="reservation-list">
+        <div class="list1">
+          <table class="table">
+            <thead>
+              <th>Reservation Id</th>
+              <th>Room type</th>
+              <th>Check-in Date</th>
+              <th>Check-out Date</th>
+              <th>Action</th>
+            </thead>
+            <tbody id="reservationDisplay">
+              {{#each reservations}}
+                <tr>
+                  <td>{{this.id}}</td>
+                  <td>{{this.room.room_type}}</td>
+                  <td>{{this.check_in_date}} </td>
+                  <td>{{this.check_out_date}} </td>
+                  <td><button
+                      class="delete-btn delete-reservation-btn"
+                      data-id="{{this.id}}"
+                    >delete</button></td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
-    </div></div>
+  </div>
 </div>
-
-
-   
-
-
-

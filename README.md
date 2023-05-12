@@ -30,6 +30,9 @@ This hotel booking app, built with Node.js, Express, Sequelize, MySQL, and sessi
 - [User Stories](#user-stories)
 - [Demo](#demo)
 - [Code Examples](#code-examples)
+- [Frontend](#frontend)
+- [Page Responsiveness](#page-responsiveness)
+- [Learning](#learning)
 - [Authors](#authors)
 - [Questions](#questions)
 - [License](#license)
@@ -40,37 +43,39 @@ This hotel booking app, built with Node.js, Express, Sequelize, MySQL, and sessi
 
 ---
 
-| Technology Used         | Resource URL           | 
-| ------------- |:-------------:| 
-| HTML     |   [Learn about HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) |
-| CSS      |   [Learn about CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) |
-| Bootstrap |  [Learn about Bootstrap](https://getbootstrap.com) |
-| JavaScript | [Learn about JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-| Node.js  |   [Learn about Node.js](https://nodejs.org/en) |
-| Express.js | [Learn about Express.js](https://expressjs.com/) |
-| MySQL2   |   [Learn about MySQL2](https://www.npmjs.com/package/mysql2) |
-| Sequelize Module                 | [Learn about Sequalize](https://sequelize.org/) |
-| Dotenv Module                    | [Learn about Dotenv](https://www.npmjs.com/package/dotenv) |
-| Handlebars Module                | [Learn about Handlebars](https://handlebarsjs.com/guide/) |
-| Bcrypt Module                    | [Learn about Bcrypt](https://www.npmjs.com/package/bcrypt) |
-| Express-handlebars Module        | [Learn about Express-handlebars](https://www.npmjs.com/package/express-handlebars) |
-| Express-session                  | [Learn about Express-session](https://www.npmjs.com/package/express-session) |
+| Technology Used                  |                                           Resource URL                                           |
+| -------------------------------- | :----------------------------------------------------------------------------------------------: |
+| HTML                             |              [Learn about HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)               |
+| CSS                              |               [Learn about CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)                |
+| Bootstrap                        |                        [Learn about Bootstrap](https://getbootstrap.com)                         |
+| JavaScript                       |        [Learn about JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)         |
+| Node.js                          |                           [Learn about Node.js](https://nodejs.org/en)                           |
+| Express.js                       |                         [Learn about Express.js](https://expressjs.com/)                         |
+| MySQL2                           |                    [Learn about MySQL2](https://www.npmjs.com/package/mysql2)                    |
+| Sequelize Module                 |                         [Learn about Sequalize](https://sequelize.org/)                          |
+| Dotenv Module                    |                    [Learn about Dotenv](https://www.npmjs.com/package/dotenv)                    |
+| Handlebars Module                |                    [Learn about Handlebars](https://handlebarsjs.com/guide/)                     |
+| Bcrypt Module                    |                    [Learn about Bcrypt](https://www.npmjs.com/package/bcrypt)                    |
+| Express-handlebars Module        |        [Learn about Express-handlebars](https://www.npmjs.com/package/express-handlebars)        |
+| Express-session                  |           [Learn about Express-session](https://www.npmjs.com/package/express-session)           |
 | Connect-session-sequelize Module | [Learn about Connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize) |
-| Anime.js  | [Learn about Anime.js](https://animejs.com/documentation/) |
-| Day.js  | [Learn about Day.js](https://day.js.org/) |
-| Git      |   [Learn about Git](https://git-scm.com/)
+| Anime.js                         |                    [Learn about Anime.js](https://animejs.com/documentation/)                    |
+| Day.js                           |                            [Learn about Day.js](https://day.js.org/)                             |
+| Git                              |                             [Learn about Git](https://git-scm.com/)                              |
 
 <br>
 
 ## User Stories
 
-
 ```
-1. As a user, 
+*All user stories are demonstrated in the gif below*
+
+
+1. As a user,
   I want to choose the branch of the hotel I want to stay in.
   So that, I have the location of my choice.
 
-2. As a user, 
+2. As a user,
   I want to see the information about each branch.
   So that, I have a better idea about them before choosing.
 
@@ -129,7 +134,7 @@ anime({
 // Check the availability of a specific room
 router.post("/rooms/:id/availability", async (req, res) => {
   try {
-    
+
   const { check_in_date, check_out_date } = req.body;
     // Check for conflicting reservations
     const conflictingReservations = await Reservation.count({
@@ -207,13 +212,125 @@ router.post("/users/signup", async (req, res) => {
   }
 });
 ```
+
+### Relationships Between our Models
+
+- As you can see our user stories informed the relationships between the models
+
+```JavaScript
+//*********** The relation of User to Reservation is One-To-Many ****************
+//Each user can have many reservations
+User.hasMany(Reservation, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
+//Each reservation belongs to one user
+Reservation.belongsTo(User, {
+  foreignKey: "user_id",
+});
+
+//*********** The relation of Room to Reservation is One-To-Many ****************
+//Each room can have many reservations(in different date)
+Room.hasMany(Reservation, {
+  foreignKey: "room_id",
+  onDelete: "CASCADE",
+});
+//Each reservation belongs to only one room
+Reservation.belongsTo(Room, {
+  foreignKey: "room_id",
+});
+
+//*********** The relation of Branch to Room is One-To-Many **********************
+//Each branch can have many rooms
+Branch.hasMany(Room, {
+  foreignKey: "branch_id",
+  onDelete: "CASCADE",
+});
+//Each room belongs to one branch
+Room.belongsTo(Branch, {
+  foreignKey: "branch_id",
+});
+
+```
+
 <br>
+
+## Frontend
+
+---
+
+We used bootstrap for the page layout. We added custom CSS as needed with our style.CSS. We utilized handlebars to dynamically generate HTML content with specific data associated with each user. We had a main.handlebars page which consisted of a navigation bar and inside this main.handlebars was nested every other handlebars file, so that the navigation bar was always present no matter which page of the app you visited. Below is our dashboard.handlebars file, it has placeholders for data that will be inserted inside the {{}}.
+
+```JavaScript
+
+<div class="dashboard-body is-flex is-flex-wrap-wrap is-justify-content-center">
+
+    <h2 class="dashboard">Dashboard</h2>
+
+    <div class="header-card custom-header-card">
+        <h1>Welcome {{username}}</h1>
+        <h4 id="booking-title">Recent Bookings</h4>
+        <div class="row justify-content-center"> <div class="col-auto"></div>
+
+        <div class="reservation-list">
+            <div class="list1">
+                <table class="table">
+                    <thead>
+                        <th>Reservation Id</th>
+                        <th>Room type</th>
+                        <th>Check-in Date</th>
+                        <th>Check-out Date</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody id="reservationDisplay">
+                    {{#each reservations}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.room.room_type}}</td>
+                        <td>{{this.check_in_date}} </td>
+                        <td>{{this.check_out_date}} </td>
+                        <td><button class="delete-btn delete-reservation-btn" data-id="{{this.id}}">delete</button></td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+```
+
+<br>
+
+## Page Responsiveness
+
+---
+
+![Alt Text](/public/images/ezgif.com-gif-maker.gif)
+
+<br>
+
+## Learning
+
+---
+
+1. User Authetication to verify user identity
+2. Encrypting password by using Bcrypt to ensure security
+3. Further knowledge of restful routes
+4. Handlebars
+5. Sequelize OpTypes
+6. How to implement models and make associations between them
+7. How to utilized JAWSDB when deploying to Heroku
+8. How to utilize session storage
 
 <br>
 
 ## Authors
 
 ---
+
 Bahareh hosseini
 
 - GitHub Page: [https://github.com/Bhmerir](https://github.com/Bhmerir)
@@ -232,9 +349,10 @@ Matthew Gibson
 
 ---
 
-If you have any questions about this application, please contact us at: 
+If you have any questions about this application, please contact us at:
+
 - Bahareh: [bhmer.ir@gmail.com](mailto:bhmer.ir@gmail.com)
-- Eugene:  [eogbeide2@gmail.com](eogbeide2@gmail.com)
+- Eugene: [eogbeide2@gmail.com](eogbeide2@gmail.com)
 - Matthew: [mtgibson888@gmail.com](mailto:mtgibson888@gmail.com)
 
 ## License
@@ -264,7 +382,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 
 ---
 
