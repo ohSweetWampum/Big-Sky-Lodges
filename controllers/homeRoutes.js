@@ -145,4 +145,8 @@ router.get("/branches/:branch_id/rooms", async (req, res) => {
   }
 });
 
+router.get("/about", (req, res) => {
+  res.render("about");
+});
+
 module.exports = router;

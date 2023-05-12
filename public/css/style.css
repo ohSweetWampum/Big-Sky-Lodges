@@ -173,3 +173,11 @@ label{
     font-size: 30px;
     font-weight: bolder;
 }
+
+.about-page-title{
+    padding: 15px;
+    line-height: 35px;
+    text-align: center;
+    background-color: rgb(102, 115, 116);
+    color: white;
+}
