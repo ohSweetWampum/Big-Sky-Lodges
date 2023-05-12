@@ -51,16 +51,20 @@ table th{
 .dashboard,
 .main-page-title{
     color:white;
-    text-align: center;
+    text-align: left;
 }
-
+.dashboard{
+    padding-left: 57px;
+}
 .main-page-title{
     padding-bottom: 10px;
 }
-
+#booking-title{
+    padding-left: 12px;
+}
 .custom-header-card,
 #booking-title{
-    text-align: center;
+    text-align: left;
 }
 .update-btn{
     padding: 8px 14px;
@@ -180,3 +184,33 @@ label{
     background-color: rgb(102, 115, 116);
     color: white;
 }
+.reservation-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    .table tr {
+      display: block;
+      margin-bottom: 1rem;
+    }
+  
+    .table td, .table th {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+    }
+  }
+
+  .table-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .table {
+    margin: 0 auto;  
+  }
+ 
