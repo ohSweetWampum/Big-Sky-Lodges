@@ -100,7 +100,7 @@ router.get("/dashboard", authRequired, async (req, res) => {
   }
 });
 
-router.get("/booknow", async (req, res) => {
+router.get("/booknow", authRequired, async (req, res) => {
   res.render("reservation", {
     loggedIn: req.session.loggedIn,
     user_id: req.session.user_id
@@ -146,7 +146,9 @@ router.get("/branches/:branch_id/rooms", async (req, res) => {
 });
 
 router.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about",{
+    loggedIn: req.session.loggedIn,
+  });
 });
 
 module.exports = router;

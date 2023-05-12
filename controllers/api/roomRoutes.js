@@ -13,7 +13,8 @@ router.get("/branches/:branch_id/rooms", async (req, res) => {
     });
 
    const rooms = roomData.map((room) => room.get({ plain: true }));
-   res.render("roompage", {rooms})
+   res.render("roompage", {rooms,
+    loggedIn: req.session.loggedIn,})
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

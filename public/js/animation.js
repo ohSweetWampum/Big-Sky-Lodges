@@ -1,10 +1,10 @@
-const barista = document.querySelector('.hotel_name');
+const hotelName = document.querySelector('.hotel-name');
 anime({
-  targets: barista,
+  targets: hotelName,
   keyframes: [
     {translateY: -20},
     {translateX: 75},
-    {translateY: 40},
+    {translateY: 30},
     {translateX: 0},
     {translateY: 0}
   ],
