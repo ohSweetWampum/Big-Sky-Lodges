@@ -99,18 +99,18 @@ button:hover{
 
 
 .home_section{
-    /* background-image: url(/public/images/branch3.jpeg); */
     background-size: cover;
     height: 40vh;
   }
   .overlay{
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
+    padding-top: 1rem;
   }
 
   .home{
-    width: 1100px;
-    height: 40vh;
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,9 +118,8 @@ button:hover{
     text-align: center;
   }
   .home h1{
-    padding-top: 50px;
-    margin-left: 20%;
-    font-size: 4rem;
+    padding-top: 3rem;
+    font-size: 2.5rem;
     color: #fff;
     text-transform: capitalize;
   }
@@ -136,13 +135,6 @@ button:hover{
       padding: 10px;
   }
 
-
-  .home h1{
-      font-size: 4rem;
-      color: #fff;
-      text-transform: capitalize;
-      margin-bottom: 5rem;
-    }
     .home span{
       color: rgb(228, 151, 8);
     }
